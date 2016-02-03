@@ -1,0 +1,126 @@
+body {
+    font-family: "Helvetica Neue", sans-serif;
+    margin: 0.5em;
+}
+
+footer.footer-small {
+    padding-top: 1em;
+    border-top: 1px solid gainsboro;
+    font-size: 0.8em;
+    margin-top: 2em;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.05em;
+    font-variant: small-caps;
+}
+
+button {
+    border: none;
+}
+
+p {
+    margin-top: 1em;
+}
+
+p.small {
+    font-size: 0.8em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.title {
+    font-weight: bold;
+}
+
+.button {
+    font-family: inherit;
+    font-size: 1em;
+    display: inline-block;
+    margin: 0;
+    padding: 0.5em 1em;
+    line-height: 1em;
+    color: white;
+    background-color: grey;
+}
+
+.button-primary {
+    background-color: #006fd7;
+    color: #ffffff;
+}
+
+.button.button-edit {
+    font-size: 0.8em;
+    padding: 0.3em 0.8em;
+}
+
+.button.button-red {
+    background-color: #8b0000;
+    color: white;
+}
+
+.center {
+    text-align: center;
+}
+
+.middle {
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 28em;
+}
+
+form {
+    margin-top: 1em;
+}
+
+form input {
+    height: 2em;
+    margin-bottom: 1em;
+    font-size: inherit;
+    width: 96%;
+    padding-left: 0.5em;
+}
+
+form input.readonly {
+    color: #808080;
+}
+
+.url-list-entry {
+    margin-top: 0.8em;
+}
+
+.url-list-entry .description {
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+
+/** Formatting **/
+.left-spacer {
+    float: left;
+    width: 26%;
+}
+
+.center-float {
+    float: left;
+    width: 48%;
+}
+
+.right-float {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
