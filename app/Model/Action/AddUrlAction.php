@@ -27,7 +27,7 @@ class AddUrlAction implements ActionInterface
     {
         $addUrl = $this->serviceContainer->getTemplateBuilder()->createTemplate();
         $url = $this->serviceContainer->getUrlBuilder()->createActionUrl('createUrl');
-        $csrfHandler = $this->serviceContainer->getCsrfHandler();
+        $csrfHandler = $this->serviceContainer->getCsrfHandler()->createNewToken();
 
         $list_urls_link = $this->serviceContainer->getUrlBuilder()->createActionUrl('listUrls');
 

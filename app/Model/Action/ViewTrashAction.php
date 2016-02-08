@@ -30,7 +30,7 @@ class ViewTrashAction implements ActionInterface
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
         $userSession = $this->serviceContainer->getUserSession();
         $templateBuilder = $this->serviceContainer->getTemplateBuilder();
-        $csrfHandler = $this->serviceContainer->getCsrfHandler();
+        $csrfHandler = $this->serviceContainer->getCsrfHandler()->createNewToken();
 
         $user_id = $userSession->getUserId();
 

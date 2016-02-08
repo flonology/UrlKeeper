@@ -27,7 +27,7 @@ class LoginAction implements ActionInterface
     {
         $userSession = $this->serviceContainer->getUserSession();
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
-        $csrfHandler = $this->serviceContainer->getCsrfHandler();
+        $csrfHandler = $this->serviceContainer->getCsrfHandler()->createNewToken();
 
         if ($userSession->userIsLoggedIn()) {
             return new HttpRedirectResponse($urlBuilder->createActionUrl('listUrls'));
