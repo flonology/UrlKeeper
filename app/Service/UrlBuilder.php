@@ -18,15 +18,20 @@ class UrlBuilder
     /**
      * @param string $action
      * @param int $id [optional]
+     * @param string $csrf_token [optional]
      * @return string
      */
-    public function createActionUrl($action, $id = 0)
+    public function createActionUrl($action, $id = 0, $csrf_token = '')
     {
         $params = [];
         $params['action'] = $action;
 
         if ($id) {
             $params['id'] = $id;
+        }
+
+        if ($csrf_token) {
+            $params['_csrf'] = $csrf_token;
         }
 
         return $this->baseUrl . '?' . http_build_query($params);

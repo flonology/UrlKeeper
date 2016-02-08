@@ -27,11 +27,15 @@ class AddUrlAction implements ActionInterface
     {
         $addUrl = $this->serviceContainer->getTemplateBuilder()->createTemplate();
         $url = $this->serviceContainer->getUrlBuilder()->createActionUrl('createUrl');
+        $csrfHandler = $this->serviceContainer->getCsrfHandler();
+
+        $list_urls_link = $this->serviceContainer->getUrlBuilder()->createActionUrl('listUrls');
 
         $addUrl
             ->loadFile('addUrl.html')
             ->addPlaceHolder('form_action', $url)
-            ->addPlaceHolder('list_urls_link', $this->serviceContainer->getUrlBuilder()->createActionUrl('listUrls'));
+            ->addPlaceHolder('list_urls_link', $list_urls_link)
+            ->addCsrfToken($csrfHandler);
 
         return new PartialHtmlResponse($addUrl->render());
     }

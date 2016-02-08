@@ -1,5 +1,6 @@
 <?php
 namespace Model\Action;
+use Model\CompleteHtmlResponse;
 use Model\HttpRedirectResponse;
 use Model\PartialHtmlResponse;
 use Model\Request;
@@ -32,6 +33,11 @@ class PerformLoginAction implements ActionInterface
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
         $passwordVerifier = $this->serviceContainer->getPasswordVerifier();
         $userSession = $this->serviceContainer->getUserSession();
+
+        $csrfHandler = $this->serviceContainer->getCsrfHandler();
+        if ($csrfHandler->requestIsValid($request) == false) {
+            return new CompleteHtmlResponse($csrfHandler->getErrorMessage());
+        }
 
         $user = $this->getUserByName($userName);
         if ($user == null) {

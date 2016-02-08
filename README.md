@@ -8,12 +8,12 @@ Silex, Lavarel, or any other?
 It took some time to build the basics and there are still some missing basic
 features, e. g.:
 
-- CSRF token
 - Validation (and messages)
 - User Management
 - Search
 - More test coverage
 - Better layout (the current one is a compromise between mobile and desktop and non-responsive)
+- There is some confusion between Models and Services
 
 After watching [Stefan Priebsch - SOLID MVC](https://vimeo.com/148989192) I noticed my way of
 having seperate Action objects for each action can go into the right direction, but I missed the

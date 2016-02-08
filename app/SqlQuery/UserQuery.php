@@ -38,8 +38,8 @@ class UserQuery
     }
 
     /**
-     * @param $name
-     * @return array | null
+     * @param string $name
+     * @return UserDataObject|null
      */
     public function getUserByName($name)
     {

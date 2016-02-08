@@ -61,6 +61,9 @@ class ServiceContainer
     /** @var DateTime */
     private $currentDate;
 
+    /** @var CsrfHandler */
+    private $csrfHandler;
+
     /**
      * @param ConfigParams $configParams
      */
@@ -267,5 +270,17 @@ class ServiceContainer
         }
 
         return $this->currentDate;
+    }
+
+    /**
+     * @return CsrfHandler
+     */
+    public function getCsrfHandler()
+    {
+        if ($this->csrfHandler == null) {
+            $this->csrfHandler = new CsrfHandler($this->getSession());
+        }
+
+        return $this->csrfHandler;
     }
 }

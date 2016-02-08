@@ -1,5 +1,6 @@
 <?php
 namespace Model\Action;
+use Model\CompleteHtmlResponse;
 use Model\HttpRedirectResponse;
 use Model\PartialHtmlResponse;
 use Model\Request;
@@ -28,6 +29,11 @@ class EmptyTrashAction implements ActionInterface
         $urlQuery = $this->serviceContainer->getUrlQuery();
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
         $userSession = $this->serviceContainer->getUserSession();
+
+        $csrfHandler = $this->serviceContainer->getCsrfHandler();
+        if ($csrfHandler->requestIsValid($request) == false) {
+            return new CompleteHtmlResponse($csrfHandler->getErrorMessage());
+        }
 
         $user_id = $userSession->getUserId();
         $urlQuery->emptyTrashByUserId($user_id);

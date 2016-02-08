@@ -1,6 +1,8 @@
 <?php
 namespace Model;
 
+use Service\CsrfHandler;
+
 class Template
 {
     const ESCAPE_MODE_HTML = 'html';
@@ -68,19 +70,15 @@ class Template
     }
 
     /**
-     * @param string $template
-     * @return array
+     * @param CsrfHandler $csrfHandler
+     * @return $this
      */
-    public function parsePlaceHolders($template)
+    public function addCsrfToken(CsrfHandler $csrfHandler)
     {
-        $matches = [];
-        preg_match_all('/::[^:]+::/i', $template, $matches);
+        $this->addPlaceHolder('csrf_token', $csrfHandler->getCurrentToken());
+        $this->addPlaceHolder('csrf_field_name', $csrfHandler->getTokenFieldName());
 
-        if (empty($matches)) {
-            return $matches;
-        }
-
-        return $matches[0];
+        return $this;
     }
 
     /**

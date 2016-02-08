@@ -1,5 +1,6 @@
 <?php
 namespace Model\Action;
+use Model\CompleteHtmlResponse;
 use Model\DataObject\UrlDataObject;
 use Model\HttpRedirectResponse;
 use Model\PartialHtmlResponse;
@@ -31,6 +32,11 @@ class CreateUrlAction implements ActionInterface
         $userSession = $this->serviceContainer->getUserSession();
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
         $formMapper = $this->serviceContainer->getUrlFormMapper();
+
+        $csrfHandler = $this->serviceContainer->getCsrfHandler();
+        if ($csrfHandler->requestIsValid($request) == false) {
+            return new CompleteHtmlResponse($csrfHandler->getErrorMessage());
+        }
 
         $urlDataObject = $formMapper->mapToDataObject($request, $userSession->getUserId());
         $formMapper->initValues($urlDataObject, $now);

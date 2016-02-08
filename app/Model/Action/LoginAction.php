@@ -27,6 +27,7 @@ class LoginAction implements ActionInterface
     {
         $userSession = $this->serviceContainer->getUserSession();
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
+        $csrfHandler = $this->serviceContainer->getCsrfHandler();
 
         if ($userSession->userIsLoggedIn()) {
             return new HttpRedirectResponse($urlBuilder->createActionUrl('listUrls'));
@@ -39,7 +40,8 @@ class LoginAction implements ActionInterface
         $loginForm = $templateBuilder->createTemplate();
         $loginForm
             ->loadFile('loginForm.html')
-            ->addPlaceHolder('form_action', $actionUrl);
+            ->addPlaceHolder('form_action', $actionUrl)
+            ->addCsrfToken($csrfHandler);
 
         return new PartialHtmlResponse($loginForm->render());
     }

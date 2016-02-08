@@ -30,6 +30,7 @@ class ViewTrashAction implements ActionInterface
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
         $userSession = $this->serviceContainer->getUserSession();
         $templateBuilder = $this->serviceContainer->getTemplateBuilder();
+        $csrfHandler = $this->serviceContainer->getCsrfHandler();
 
         $user_id = $userSession->getUserId();
 
@@ -47,7 +48,7 @@ class ViewTrashAction implements ActionInterface
             )
             ->addPlaceHolder(
                 'empty_trash_link',
-                $urlBuilder->createActionUrl('emptyTrash')
+                $urlBuilder->createActionUrl('emptyTrash', 0, $csrfHandler->getCurrentToken())
             );
 
         return new PartialHtmlResponse($trashedList->render());
@@ -61,12 +62,17 @@ class ViewTrashAction implements ActionInterface
     {
         $urlBuilder = $this->serviceContainer->getUrlBuilder();
         $urlListEntryBuilder = $this->serviceContainer->getUrlListEntryBuilder();
+        $csrfHandler = $this->serviceContainer->getCsrfHandler();
 
         $rendered = '';
         $urls = $this->getTrashedUrlsByUserId($user_id);
 
         foreach ($urls as $url) {
-            $untrash_link = $urlBuilder->createActionUrl('unTrashUrl', $url->getId());
+            $untrash_link = $urlBuilder->createActionUrl(
+                'unTrashUrl',
+                $url->getId(),
+                $csrfHandler->getCurrentToken()
+            );
 
             $urlListEntry = $urlListEntryBuilder->buildUrlListEntry($url, $untrash_link);
             $rendered .= $urlListEntry->render();
