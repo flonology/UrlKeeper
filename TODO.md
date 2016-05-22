@@ -25,4 +25,4 @@
     - delete after logging in
 
 
-## Stay loggin in for 30 days
+## Stay logged in for 30 days

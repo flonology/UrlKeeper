@@ -33,7 +33,7 @@ class App
     public function run(Request $request)
     {
         $this->redirectToLoginIfNotLoggedIn($request);
-        $actionName = $request->getGetVal('action') ?: 'index';
+        $actionName = $request->getGetVal('action') ?: 'notFound';
         $action = $this->actionBuilder->createAction($actionName);
 
         $response = $action->run($request);
@@ -55,6 +55,10 @@ class App
 
         if ($response instanceof PartialHtmlResponse) {
             $response = $this->buildCompleteHtmlResponse($response);
+        }
+
+        if ($response instanceof NotFoundResponse) {
+            http_response_code(404);
         }
 
         return $response->getContent();

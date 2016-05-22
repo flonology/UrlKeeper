@@ -2,6 +2,7 @@
 namespace Service;
 
 use Model\Action\ActionInterface;
+use Model\Action\NotFoundAction;
 
 
 class ActionBuilder
@@ -28,7 +29,7 @@ class ActionBuilder
 
         $className = '\\Model\\Action\\' . $actionName . 'Action';
         if (class_exists($className) == false) {
-            throw new \RuntimeException(sprintf('Action %s not found.', $actionName));
+            return new NotFoundAction($this->serviceContainer);
         }
 
         return new $className($this->serviceContainer);
