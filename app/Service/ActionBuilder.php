@@ -9,6 +9,7 @@ class ActionBuilder
 {
     /** @var ServiceContainer */
     private $serviceContainer;
+    private $defaultActionName = 'listUrls';
 
     /**
      * @param ServiceContainer $serviceContainer
@@ -24,6 +25,8 @@ class ActionBuilder
      */
     public function createAction($actionName)
     {
+        $actionName = $actionName ? $actionName : $this->defaultActionName;
+
         // Make first letter upper case
         $actionName = strtoupper(substr($actionName, 0, 1)) . substr($actionName, 1);
 

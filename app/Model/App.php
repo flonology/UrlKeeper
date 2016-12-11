@@ -33,7 +33,7 @@ class App
     public function run(Request $request)
     {
         $this->redirectToLoginIfNotLoggedIn($request);
-        $actionName = $request->getGetVal('action') ?: 'notFound';
+        $actionName = $request->getGetVal('action');
         $action = $this->actionBuilder->createAction($actionName);
 
         $response = $action->run($request);

@@ -29,4 +29,10 @@ class ActionBuilderTest extends \PHPUnit_Framework_TestCase
         $result = $this->actionBuilder->createAction('listUrls');
         $this->assertInstanceOf('Model\Action\ListUrlsAction', $result);
     }
+
+    public function testCreatesListUrlsAsDefaultIfNoActionProvided()
+    {
+        $result = $this->actionBuilder->createAction('');
+        $this->assertInstanceOf('Model\Action\ListUrlsAction', $result);
+    }
 }
