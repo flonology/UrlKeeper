@@ -4,7 +4,7 @@ namespace Model;
 
 class SessionWrapper implements SessionWrapperInterface
 {
-    public function __construct($lifeTime = 86400)
+    public function __construct($lifeTime = 2592000)
     {
         session_set_cookie_params($lifeTime);
     }
