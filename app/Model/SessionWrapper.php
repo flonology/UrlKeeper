@@ -18,6 +18,14 @@ class SessionWrapper implements SessionWrapperInterface
     }
 
     /**
+     * @return bool
+     */
+    public function sessionRegenrateId()
+    {
+        return session_regenerate_id();
+    }
+
+    /**
      * @param string $name
      * @return string
      */
