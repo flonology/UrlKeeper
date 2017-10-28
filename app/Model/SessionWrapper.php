@@ -7,6 +7,7 @@ class SessionWrapper implements SessionWrapperInterface
     public function __construct($lifeTime = 2592000)
     {
         session_set_cookie_params($lifeTime);
+        ini_set('session.gc_maxlifetime', ($lifeTime + 300));
     }
 
     /**
