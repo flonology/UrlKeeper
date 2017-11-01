@@ -10,11 +10,6 @@ interface SessionWrapperInterface
     public function sessionStart();
 
     /**
-     * @return bool
-     */
-    public function sessionRegenrateId();
-
-    /**
      * @param string $name
      * @return string
      */

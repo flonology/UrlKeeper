@@ -4,10 +4,13 @@ namespace Model;
 
 class SessionWrapper implements SessionWrapperInterface
 {
-    public function __construct($lifeTime = 2592000)
+    const YEAR = 31536000;
+    const MONTH = 2592000;
+
+    public function __construct($lifeTime = self::YEAR, $gcMaxlifetime = self::MONTH)
     {
         session_set_cookie_params($lifeTime);
-        ini_set('session.gc_maxlifetime', ($lifeTime + 300));
+        ini_set('session.gc_maxlifetime', $gcMaxlifetime);
     }
 
     /**
@@ -16,14 +19,6 @@ class SessionWrapper implements SessionWrapperInterface
     public function sessionStart()
     {
         return session_start();
-    }
-
-    /**
-     * @return bool
-     */
-    public function sessionRegenrateId()
-    {
-        return session_regenerate_id();
     }
 
     /**

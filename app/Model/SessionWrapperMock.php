@@ -19,14 +19,6 @@ class SessionWrapperMock implements SessionWrapperInterface
     }
 
     /**
-     * @return bool
-     */
-    public function sessionRegenrateId()
-    {
-        return true;
-    }
-
-    /**
      * @param array $values
      * @return $this
      */

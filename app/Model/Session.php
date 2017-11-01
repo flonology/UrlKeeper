@@ -68,7 +68,6 @@ class Session
     public function save()
     {
         $this->sessionWrapper->save($this->keyValueStore->getValues());
-        $this->sessionWrapper->sessionRegenrateId();
         return $this;
     }
 
