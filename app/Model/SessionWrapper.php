@@ -10,6 +10,7 @@ class SessionWrapper implements SessionWrapperInterface
     public function __construct($lifeTime = self::YEAR, $gcMaxlifetime = self::MONTH)
     {
         session_set_cookie_params($lifeTime);
+        session_save_path(APP_PATH_SESSIONS);
         ini_set('session.gc_maxlifetime', $gcMaxlifetime);
     }
 
