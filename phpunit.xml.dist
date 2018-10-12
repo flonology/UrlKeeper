@@ -3,4 +3,10 @@
         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.6/phpunit.xsd"
         bootstrap="app/bootstrap.php"
         colors="true">
+
+        <testsuites>
+            <testsuite name="UrlKeeper Test Suite">
+                <directory suffix="Test.php">./tests</directory>
+            </testsuite>
+        </testsuites>
 </phpunit>

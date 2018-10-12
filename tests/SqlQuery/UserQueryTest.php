@@ -4,9 +4,9 @@ use Model\DataObject\UserDataObject;
 use Service\PdoSqlite;
 use SqlQuery\UserQuery;
 use TestHelper\Db;
+use TestHelper\UrlKeeperTestCase;
 
-
-class UserQueryTest extends \PHPUnit_Framework_TestCase
+class UserQueryTest extends UrlKeeperTestCase
 {
     /** @var PdoSqlite */
     private $pdo;

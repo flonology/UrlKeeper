@@ -1,5 +1,7 @@
 <?php
 namespace UrlKeeperTests;
+use TestHelper\UrlKeeperTestCase;
+
 use DateTime;
 use Mapper\UrlDataObjectMapper;
 use Mapper\UrlFormMapper;
@@ -7,7 +9,7 @@ use Model\DataObject\UrlDataObject;
 use Model\Request;
 
 
-class UrlMapperTest extends \PHPUnit_Framework_TestCase
+class UrlMapperTest extends UrlKeeperTestCase
 {
     /** @var UrlDataObjectMapper */
     private $urlDataObjectMapper;

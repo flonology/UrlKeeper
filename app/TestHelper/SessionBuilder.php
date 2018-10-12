@@ -2,19 +2,17 @@
 namespace TestHelper;
 use Model\KeyValueStore;
 use Model\Session;
-use Model\SessionWrapper;
-
+use Model\SessionWrapperMock;
+use TestHelper\UrlKeeperTestCase;
 
 class SessionBuilder
 {
-    public static function createMockSession(\PHPUnit_Framework_TestCase $testCase)
+    public static function createMockSession(UrlKeeperTestCase $testCase)
     {
         $keyValueStore = new KeyValueStore();
 
-        $sessionWrapper = $testCase->getMockBuilder(SessionWrapper::class)->getMock();
-        $sessionWrapper->method('getValues')->willReturn([]);
-        $sessionWrapper->method('sessionStart')->willReturn(true);
-        $sessionWrapper->method('sessionName')->willReturn('Test Session');
+        $sessionWrapper = new SessionWrapperMock();
+        $sessionWrapper->sessionName('Test Session');
 
         /** @var SessionWrapper $sessionWrapper */
         $session = new Session($sessionWrapper, $keyValueStore);

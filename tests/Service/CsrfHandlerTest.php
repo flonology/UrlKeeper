@@ -4,9 +4,9 @@ use Model\Request;
 use Model\Session;
 use Service\CsrfHandler;
 use TestHelper\SessionBuilder;
+use TestHelper\UrlKeeperTestCase;
 
-
-class CsrfHandlerTest extends \PHPUnit_Framework_TestCase
+class CsrfHandlerTest extends UrlKeeperTestCase
 {
     /** @var CsrfHandler */
     private $csrfHandler;
@@ -19,7 +19,6 @@ class CsrfHandlerTest extends \PHPUnit_Framework_TestCase
         $this->session = SessionBuilder::createMockSession($this);
         $this->csrfHandler = new CsrfHandler($this->session);
     }
-
 
     public function testRequestIsInvalidIfNoTokenProvided()
     {

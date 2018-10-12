@@ -4,9 +4,10 @@ use Service\ServiceContainer;
 use Service\ConfigParams;
 use Service\ActionBuilder;
 use TestHelper\ConfigParamsBuilder;
+use TestHelper\UrlKeeperTestCase;
 
 
-class ActionBuilderTest extends \PHPUnit_Framework_TestCase
+class ActionBuilderTest extends UrlKeeperTestCase
 {
     /** @var ActionBuilder */
     private $actionBuilder;

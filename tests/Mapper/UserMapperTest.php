@@ -2,9 +2,10 @@
 namespace UrlKeeperTests;
 use Mapper\UserDataObjectMapper;
 use Model\DataObject\UserDataObject;
+use TestHelper\UrlKeeperTestCase;
 
 
-class UserMapperTest extends \PHPUnit_Framework_TestCase
+class UserMapperTest extends UrlKeeperTestCase
 {
     /** @var UserDataObjectMapper */
     private $userDataObjectMapper;
